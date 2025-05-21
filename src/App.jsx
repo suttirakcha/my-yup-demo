@@ -13,7 +13,9 @@ function App() {
 
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
+    day: "",
+    age: ""
   })
 
   // const schema = Yup.object({
@@ -80,6 +82,28 @@ function App() {
           />
         </p>
         <p className={styles.textError}>{errors.password}</p>
+      </div>
+      <div className={styles.divInput}>
+        <label>Day:</label>
+        <input 
+          className={styles.input} 
+          type="number"
+          name="day"
+          value={form.day}
+          onChange={handleChange}
+        />
+        <p className={styles.textError}>{errors.day}</p>
+      </div>
+      <div className={styles.divInput}>
+        <label>Age:</label>
+        <input 
+          className={styles.input} 
+          type="number"
+          name="age"
+          value={form.age}
+          onChange={handleChange}
+        />
+        <p className={styles.textError}>{errors.age}</p>
       </div>
       <button type="submit">สมัครสมาชิก</button>
      </form>
