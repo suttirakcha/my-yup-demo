@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { signupSchema } from "../schemas/signupSchema"
 import { yupToFormError } from "../utils/yupToFormErrors"
 
@@ -18,6 +18,16 @@ export default function SignupForm() {
             tel: "",
             terms: false
         })
+
+    const refs = {
+        username: useRef(null),
+        nickname: useRef(null),
+        password: useRef(null),
+        confirmPassword: useRef(null),
+        age: useRef(null),
+        tel: useRef(null),
+        terms: useRef(null)
+    }
 
     const [errors, setErrors] = useState({})
     
@@ -48,7 +58,7 @@ export default function SignupForm() {
             alert("ส่งสำเร็จ");
             setErrors({});
         } catch(err) {
-            const errorObj = yupToFormError(err);
+            const errorObj = yupToFormError(err, refs);
             setErrors(errorObj);
         }
     }
@@ -67,6 +77,7 @@ export default function SignupForm() {
                     name="username" 
                     value={form.username}
                     onChange={handleChange}
+                    ref={refs.username}
                     />
                 </p>
                 <p className={styles.textError}>{errors.username}</p>
@@ -80,6 +91,7 @@ export default function SignupForm() {
                     name="nickname" 
                     value={form.nickname}
                     onChange={handleChange}
+                    ref={refs.nickname}
                     />
                 </p>
                 <p className={styles.textError}>{errors.nickname}</p>
@@ -94,6 +106,7 @@ export default function SignupForm() {
                     type="password"
                     value={form.password}
                     onChange={handleChange}
+                    ref={refs.password}
                     />
                 </p>
                 <p className={styles.textError}>{errors.password}</p>
@@ -107,6 +120,7 @@ export default function SignupForm() {
                     type="password"
                     value={form.confirmPassword}
                     onChange={handleChange}
+                    ref={refs.confirmPassword}
                     />
                 </p>
                 <p className={styles.textError}>{errors.confirmPassword}</p>
@@ -119,6 +133,7 @@ export default function SignupForm() {
                     name="age"
                     value={form.age}
                     onChange={handleChange}
+                    ref={refs.age}
                 />
                 <p className={styles.textError}>{errors.age}</p>
             </div>
@@ -130,6 +145,7 @@ export default function SignupForm() {
                     name="tel"
                     value={form.tel}
                     onChange={handleChange}
+                    ref={refs.tel}
                 />
                 <p className={styles.textError}>{errors.tel}</p>
             </div>
@@ -141,6 +157,7 @@ export default function SignupForm() {
                     name="terms"
                     value={form.terms}
                     onChange={handleChange}
+                    ref={refs.terms}
                 />
                 <p className={styles.textError}>{errors.terms}</p>
             </div>
