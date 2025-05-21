@@ -15,6 +15,7 @@ export default function SignupForm() {
             password: "",
             confirmPassword: "",
             age: "",
+            tel: "",
             terms: false
         })
 
@@ -120,6 +121,17 @@ export default function SignupForm() {
                     onChange={handleChange}
                 />
                 <p className={styles.textError}>{errors.age}</p>
+            </div>
+            <div className={styles.divInput}>
+                <label>เบอร์โทร:</label>
+                <input 
+                    className={styles.input} 
+                    type="number"
+                    name="tel"
+                    value={form.tel}
+                    onChange={handleChange}
+                />
+                <p className={styles.textError}>{errors.tel}</p>
             </div>
              <div className={styles.divInput}>
                 <label>ยอมรับเงื่อนไข:</label>
