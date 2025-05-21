@@ -1,7 +1,7 @@
 import { useState } from "react"
 import * as Yup from 'yup';
 import { loginSchema } from "./schemas/loginSchema";
-
+import { yupToFormError } from "./utils/yupToFormErrors";
 
 
 function App() {
@@ -37,12 +37,7 @@ function App() {
       alert("ส่งสำเร็จ");
       setErrors({});
     } catch(err) {
-      console.log(err.inner);
-      const errorObj = {}
-      err.inner.forEach((error)=> {
-        errorObj[error.path] = error.message;
-      })
-      console.log(errorObj);
+      const errorObj = yupToFormError(err);
       setErrors(errorObj);
     }
 
