@@ -24,7 +24,7 @@ export const signupSchema = Yup.object({
     .min(14, "ต้องมีอายุมากกว่า 13 ปี"),
 
     tel: Yup.string()
-    .matches(/^\d{10}$/, "เบอร์ไทนต้องมี 10 ตัวเลข"),
+    .matches(/^\d{10}$/, "เบอร์โทรต้องมี 10 ตัวเลข"),
 
     terms: Yup.boolean()
     .oneOf([true], "ต้องยอมรับเงื่อนไขก่อน")
